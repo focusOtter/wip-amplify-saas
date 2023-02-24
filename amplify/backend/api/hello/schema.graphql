@@ -1,0 +1,70 @@
+type Query {
+	# This function gets:
+	# proof of auth automatically handled by AppSync
+	# proof of self automatically given as event.context.identity
+	# Use above to Lookup user in db and make sure they are paid
+	# If so,
+	getRecipeIdea(ingredients: [String]!): String
+		@auth(rules: [{ allow: private }])
+		@function(name: "generateAIRecipeFunc-{env}") # event.context.idenity.sub
+}
+
+# given cognito user can read their own user details
+# " user has many recipes. A recipe belongs to a User"
+type User @model @auth(rules: [{ allow: owner, operations: [read] }]) {
+	id: ID!
+	username: String!
+	email: AWSEmail!
+	stripeCustomerId: String
+	subscriptionStatus: PLAN_STATUS_ENUM!
+	subscriptionPlan: PLAN_NAME_ENUM
+	# Accessing the User table gives you access to the related recipes
+	# (related by the User id)
+	# The actual database doesn't carry a record of related recipes. This is all done in AppSync
+	recipes: [Recipe]! @hasMany
+}
+
+# given cognito user can CRUDL on their own recipe
+type Recipe @model @auth(rules: [{ allow: owner }]) {
+	id: ID!
+	title: String!
+	# Accessing the Recipe table gives access to the associated user
+	# (there is no "user" input or return value. userRecipeId = User id)
+	user: User! @belongsTo
+	description: String!
+	coverImage: String!
+	servings: Int!
+	ingredients: Ingredients!
+	steps: [Step]!
+	visibility: RECIPE_STATUS_ENUM!
+}
+
+type Ingredients {
+	image: String
+	items: [String]!
+}
+
+type Step {
+	image: String
+	item: String!
+}
+
+enum PLAN_STATUS_ENUM {
+	prospective # Signed up, new to platform. Hasn't ever subscribed
+	trialing # Started n-day free trial. Assumes card on file
+	active # They're paid
+	past_due # They're unpaid, more attempts will automatically be made
+	unpaid # Stripe is done attempting. Revoke access here
+	canceled # Customer canceled. Still signed up. Has to resubscribe
+}
+
+enum PLAN_NAME_ENUM {
+	RECIPE_BASIC
+	RECIPE_PRO
+}
+
+enum RECIPE_STATUS_ENUM {
+	DRAFT
+	PUBLIC
+	PRIVATE
+}

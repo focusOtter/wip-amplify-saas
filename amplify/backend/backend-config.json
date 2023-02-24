@@ -1,0 +1,184 @@
+{
+  "api": {
+    "hello": {
+      "dependsOn": [
+        {
+          "attributes": [
+            "UserPoolId"
+          ],
+          "category": "auth",
+          "resourceName": "hello54524217"
+        }
+      ],
+      "output": {
+        "authConfig": {
+          "additionalAuthenticationProviders": [
+            {
+              "authenticationType": "AWS_IAM"
+            },
+            {
+              "authenticationType": "AWS_LAMBDA",
+              "lambdaAuthorizerConfig": {
+                "lambdaFunction": "graphQlLambdaAuthorizerfe945261",
+                "ttlSeconds": "300"
+              }
+            }
+          ],
+          "defaultAuthentication": {
+            "authenticationType": "AMAZON_COGNITO_USER_POOLS",
+            "userPoolConfig": {
+              "userPoolId": "authhello54524217"
+            }
+          }
+        }
+      },
+      "providerPlugin": "awscloudformation",
+      "service": "AppSync"
+    }
+  },
+  "auth": {
+    "hello54524217": {
+      "customAuth": false,
+      "dependsOn": [
+        {
+          "attributes": [
+            "Arn",
+            "Name"
+          ],
+          "category": "function",
+          "resourceName": "hello54524217PostConfirmation",
+          "triggerProvider": "Cognito"
+        }
+      ],
+      "frontendAuthConfig": {
+        "mfaConfiguration": "OFF",
+        "mfaTypes": [
+          "SMS"
+        ],
+        "passwordProtectionSettings": {
+          "passwordPolicyCharacters": [],
+          "passwordPolicyMinLength": 8
+        },
+        "signupAttributes": [
+          "EMAIL"
+        ],
+        "socialProviders": [],
+        "usernameAttributes": [],
+        "verificationMechanisms": [
+          "EMAIL"
+        ]
+      },
+      "providerPlugin": "awscloudformation",
+      "service": "Cognito"
+    }
+  },
+  "function": {
+    "hello54524217PostConfirmation": {
+      "build": true,
+      "dependsOn": [
+        {
+          "attributes": [
+            "GraphQLAPIIdOutput"
+          ],
+          "category": "api",
+          "resourceName": "hello"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "sampleStripeWebhook": {
+      "build": true,
+      "dependsOn": [
+        {
+          "attributes": [
+            "GraphQLAPIIdOutput"
+          ],
+          "category": "api",
+          "resourceName": "hello"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "stripeWebhooks": {
+      "build": true,
+      "dependsOn": [
+        {
+          "attributes": [
+            "GraphQLAPIIdOutput"
+          ],
+          "category": "api",
+          "resourceName": "hello"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    }
+  },
+  "parameters": {
+    "AMPLIFY_function_hello54524217PostConfirmation_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "hello54524217PostConfirmation"
+        }
+      ]
+    },
+    "AMPLIFY_function_hello54524217PostConfirmation_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "hello54524217PostConfirmation"
+        }
+      ]
+    },
+    "AMPLIFY_function_sampleStripeWebhook_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "sampleStripeWebhook"
+        }
+      ]
+    },
+    "AMPLIFY_function_sampleStripeWebhook_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "sampleStripeWebhook"
+        }
+      ]
+    },
+    "AMPLIFY_function_sampleStripeWebhook_secretsPathAmplifyAppId": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "sampleStripeWebhook"
+        }
+      ]
+    },
+    "AMPLIFY_function_stripeWebhooks_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "stripeWebhooks"
+        }
+      ]
+    },
+    "AMPLIFY_function_stripeWebhooks_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "stripeWebhooks"
+        }
+      ]
+    }
+  },
+  "storage": {
+    "recipeImages": {
+      "dependsOn": [],
+      "providerPlugin": "awscloudformation",
+      "service": "S3"
+    }
+  }
+}

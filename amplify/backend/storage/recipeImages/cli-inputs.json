@@ -1,0 +1,14 @@
+{
+  "resourceName": "recipeImages",
+  "policyUUID": "77a7c855",
+  "bucketName": "recipeimages",
+  "storageAccess": "auth",
+  "guestAccess": [],
+  "authAccess": [
+    "CREATE_AND_UPDATE",
+    "READ",
+    "DELETE"
+  ],
+  "triggerFunction": "NONE",
+  "groupAccess": {}
+}

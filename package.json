@@ -6,12 +6,18 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "webhook:listen": "stripe listen --forward-to localhost:3000/api/sampleStripeWebhook"
   },
   "dependencies": {
+    "@aws-amplify/ui-react": "^4.3.7",
     "@next/font": "13.1.6",
+    "@stripe/stripe-js": "^1.47.0",
+    "aws-amplify": "^5.0.14",
     "next": "13.1.6",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "react-icons": "^4.7.1",
+    "stripe": "^11.11.0"
   }
 }

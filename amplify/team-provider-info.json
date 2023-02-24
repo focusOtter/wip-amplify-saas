@@ -1,0 +1,42 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-hello-dev-04129-authRole",
+      "UnauthRoleArn": "arn:aws:iam::311853295989:role/amplify-hello-dev-04129-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::311853295989:role/amplify-hello-dev-04129-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-hello-dev-04129-deployment",
+      "UnauthRoleName": "amplify-hello-dev-04129-unauthRole",
+      "StackName": "amplify-hello-dev-04129",
+      "StackId": "arn:aws:cloudformation:us-east-1:311853295989:stack/amplify-hello-dev-04129/1e5b8310-a9d7-11ed-9fd8-1280dcdd8785",
+      "AmplifyAppId": "djjmkp6ae19rz",
+      "AuthTriggerTemplateURL": "https://s3.amazonaws.com/amplify-hello-dev-04129-deployment/amplify-cfn-templates/auth/auth-trigger-cloudformation-template.json"
+    },
+    "categories": {
+      "auth": {
+        "hello54524217": {}
+      },
+      "api": {
+        "hello": {}
+      },
+      "function": {
+        "hello54524217PostConfirmation": {
+          "deploymentBucketName": "amplify-hello-dev-04129-deployment",
+          "s3Key": "amplify-builds/hello54524217PostConfirmation-58316a5562386c536472-build.zip"
+        },
+        "stripeWebhooks": {
+          "deploymentBucketName": "amplify-hello-dev-04129-deployment",
+          "s3Key": "amplify-builds/stripeWebhooks-4961426f73735a414975-build.zip"
+        },
+        "sampleStripeWebhook": {
+          "deploymentBucketName": "amplify-hello-dev-04129-deployment",
+          "s3Key": "amplify-builds/sampleStripeWebhook-6e36666a615535664a49-build.zip",
+          "secretsPathAmplifyAppId": "djjmkp6ae19rz"
+        }
+      },
+      "storage": {
+        "recipeImages": {}
+      }
+    }
+  }
+}

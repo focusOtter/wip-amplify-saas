@@ -1,0 +1,89 @@
+{
+	"id": "evt_1MehLWFVOljUQinz4uV5ctj8",
+	"object": "event",
+	"api_version": "2022-11-15",
+	"created": 1677168517,
+	"data": {
+		"object": {
+			"id": "cs_test_a19Qfc9475hJJ5JvFDAsC26tUB9cqihsZcNTbnT9TlBjQx0hyNjHSLoydc",
+			"object": "checkout.session",
+			"after_expiration": null,
+			"allow_promotion_codes": false,
+			"amount_subtotal": 0,
+			"amount_total": 0,
+			"automatic_tax": {
+				"enabled": true,
+				"status": "complete"
+			},
+			"billing_address_collection": "auto",
+			"cancel_url": "https://stripe.com",
+			"client_reference_id": "3d18dd5a-79c4-47c8-9fc7-782abf5aa66a__focusotter",
+			"consent": null,
+			"consent_collection": null,
+			"created": 1677168470,
+			"currency": "usd",
+			"custom_fields": [],
+			"custom_text": {
+				"shipping_address": null,
+				"submit": null
+			},
+			"customer": "cus_NPWOIAnUrcoMyl",
+			"customer_creation": "always",
+			"customer_details": {
+				"address": {
+					"city": "Davenport",
+					"country": "US",
+					"line1": "318 West 29th Place",
+					"line2": null,
+					"postal_code": "52803",
+					"state": "IA"
+				},
+				"email": "mtliendo@focusotter.com",
+				"name": "Michael Liendo",
+				"phone": null,
+				"tax_exempt": "none",
+				"tax_ids": []
+			},
+			"customer_email": "mtliendo@focusotter.com",
+			"expires_at": 1677254869,
+			"invoice": "in_1MehLUFVOljUQinz0VdP7pNp",
+			"invoice_creation": null,
+			"livemode": false,
+			"locale": "en",
+			"metadata": {},
+			"mode": "subscription",
+			"payment_intent": null,
+			"payment_link": null,
+			"payment_method_collection": "always",
+			"payment_method_options": {},
+			"payment_method_types": ["card"],
+			"payment_status": "paid",
+			"phone_number_collection": {
+				"enabled": false
+			},
+			"recovered_from": null,
+			"setup_intent": null,
+			"shipping_address_collection": null,
+			"shipping_options": [],
+			"status": "complete",
+			"submit_type": null,
+			"subscription": "sub_1MehLUFVOljUQinzXCmiWgGg",
+			"success_url": "https://stripe.com",
+			"total_details": {
+				"amount_discount": 0,
+				"amount_shipping": 0,
+				"amount_tax": 0
+			},
+			"url": null,
+			"shipping_cost": null,
+			"shipping_details": null
+		}
+	},
+	"livemode": false,
+	"pending_webhooks": 3,
+	"request": {
+		"id": null,
+		"idempotency_key": null
+	},
+	"type": "checkout.session.completed"
+}

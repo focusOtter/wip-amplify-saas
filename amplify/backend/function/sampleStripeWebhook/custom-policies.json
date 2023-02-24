@@ -1,0 +1,6 @@
+[
+	{
+		"Action": ["ssm:GetParameter", "ssm:GetParameters"],
+		"Resource": ["arn:aws:ssm:us-east-1:311853295989:*"]
+	}
+]
